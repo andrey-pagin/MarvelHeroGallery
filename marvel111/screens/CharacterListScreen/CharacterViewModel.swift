@@ -1,6 +1,6 @@
 import Foundation
 
-protocol MainViewModelProtocol: AnyObject {
+protocol CharacterViewModel: AnyObject {
     var items: [CollectionCellItem] { get }
     var itemsPublisher: Published<[CollectionCellItem]>.Publisher { get }
     var isLoading: Bool { get }

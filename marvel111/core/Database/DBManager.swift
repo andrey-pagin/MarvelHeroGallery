@@ -50,7 +50,7 @@ private extension CharacterModel {
 
 // MARK: CharacterRealmModel
 // Realm object should bs in global space
-fileprivate final class CharacterRealmModel: Object {
+final class CharacterRealmModel: Object {
     @Persisted var name: String
     @Persisted var characterDescription: String
     @Persisted(primaryKey: true) var heroId: Int

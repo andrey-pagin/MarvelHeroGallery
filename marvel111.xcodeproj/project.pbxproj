@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		5540508A29429E0A004C80A0 /* CharacterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5540508929429E0A004C80A0 /* CharacterRepository.swift */; };
-		5540508E2942A6E0004C80A0 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5540508D2942A6E0004C80A0 /* MainViewModel.swift */; };
+		5540508E2942A6E0004C80A0 /* CharacterViewModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5540508D2942A6E0004C80A0 /* CharacterViewModelImpl.swift */; };
 		554050922942B932004C80A0 /* UIImage+AverageColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554050912942B932004C80A0 /* UIImage+AverageColor.swift */; };
 		554050952945708E004C80A0 /* AF + GenericPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554050942945708E004C80A0 /* AF + GenericPayload.swift */; };
 		5540509729458A07004C80A0 /* CollectionViewLoadingIndicatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5540509629458A07004C80A0 /* CollectionViewLoadingIndicatorCell.swift */; };
 		5540509A294597BA004C80A0 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55405099294597BA004C80A0 /* DBManager.swift */; };
 		5540509C294597EE004C80A0 /* CharacterModelDatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5540509B294597EE004C80A0 /* CharacterModelDatabaseProtocol.swift */; };
-		554050A02946A403004C80A0 /* MainViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5540509F2946A403004C80A0 /* MainViewModelProtocol.swift */; };
+		554050A02946A403004C80A0 /* CharacterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5540509F2946A403004C80A0 /* CharacterViewModel.swift */; };
 		554050A429498550004C80A0 /* FullScreenImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554050A329498550004C80A0 /* FullScreenImageViewModel.swift */; };
 		554AF2802901762E003CC67A /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 554AF27029017629003CC67A /* Roboto-Medium.ttf */; };
 		554AF2812901762E003CC67A /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 554AF27129017629003CC67A /* Roboto-BlackItalic.ttf */; };
@@ -38,7 +38,7 @@
 		55B9FF4F2900937E00F64053 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B9FF4E2900937E00F64053 /* AppDelegate.swift */; };
 		55B9FF582900937F00F64053 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55B9FF572900937F00F64053 /* Assets.xcassets */; };
 		55B9FF5B2900937F00F64053 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55B9FF592900937F00F64053 /* LaunchScreen.storyboard */; };
-		55B9FF6C290098C100F64053 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B9FF6B290098C100F64053 /* MainViewController.swift */; };
+		55B9FF6C290098C100F64053 /* CharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B9FF6B290098C100F64053 /* CharacterViewController.swift */; };
 		55F334D32972034500795EC7 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F334D22972034500795EC7 /* DatabaseManager.swift */; };
 		55F9D53A290AA1BE00D02DEA /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 55F9D539290AA1BE00D02DEA /* Kingfisher */; };
 		55F9D53C2911AFCF00D02DEA /* FullScreenTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F9D53B2911AFCF00D02DEA /* FullScreenTransitionManager.swift */; };
@@ -66,13 +66,13 @@
 
 /* Begin PBXFileReference section */
 		5540508929429E0A004C80A0 /* CharacterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterRepository.swift; sourceTree = "<group>"; };
-		5540508D2942A6E0004C80A0 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		5540508D2942A6E0004C80A0 /* CharacterViewModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewModelImpl.swift; sourceTree = "<group>"; };
 		554050912942B932004C80A0 /* UIImage+AverageColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+AverageColor.swift"; sourceTree = "<group>"; };
 		554050942945708E004C80A0 /* AF + GenericPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AF + GenericPayload.swift"; sourceTree = "<group>"; };
 		5540509629458A07004C80A0 /* CollectionViewLoadingIndicatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewLoadingIndicatorCell.swift; sourceTree = "<group>"; };
 		55405099294597BA004C80A0 /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		5540509B294597EE004C80A0 /* CharacterModelDatabaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterModelDatabaseProtocol.swift; sourceTree = "<group>"; };
-		5540509F2946A403004C80A0 /* MainViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModelProtocol.swift; sourceTree = "<group>"; };
+		5540509F2946A403004C80A0 /* CharacterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewModel.swift; sourceTree = "<group>"; };
 		554050A329498550004C80A0 /* FullScreenImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenImageViewModel.swift; sourceTree = "<group>"; };
 		554AF27029017629003CC67A /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		554AF27129017629003CC67A /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
@@ -98,7 +98,7 @@
 		55B9FF572900937F00F64053 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		55B9FF5A2900937F00F64053 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		55B9FF5C2900937F00F64053 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		55B9FF6B290098C100F64053 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		55B9FF6B290098C100F64053 /* CharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewController.swift; sourceTree = "<group>"; };
 		55F334D22972034500795EC7 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		55F9D53B2911AFCF00D02DEA /* FullScreenTransitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenTransitionManager.swift; sourceTree = "<group>"; };
 		55F9D5402911B6CC00D02DEA /* FullScreenImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullScreenImageViewController.swift; sourceTree = "<group>"; };
@@ -130,27 +130,27 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		554050902942B91D004C80A0 /* Extensions */ = {
+		554050902942B91D004C80A0 /* helper */ = {
 			isa = PBXGroup;
 			children = (
 				554050912942B932004C80A0 /* UIImage+AverageColor.swift */,
 				554050942945708E004C80A0 /* AF + GenericPayload.swift */,
 			);
-			path = Extensions;
+			path = helper;
 			sourceTree = "<group>";
 		};
-		5540509329455E11004C80A0 /* MainView */ = {
+		5540509329455E11004C80A0 /* CharacterListScreen */ = {
 			isa = PBXGroup;
 			children = (
 				554AF2932901D931003CC67A /* CollectionViewCell.swift */,
 				F7BDDA9C2906627400D4E7FE /* BackgroundView.swift */,
 				554AF291290179B2003CC67A /* PagingCollectionViewLayout.swift */,
-				5540509F2946A403004C80A0 /* MainViewModelProtocol.swift */,
-				55B9FF6B290098C100F64053 /* MainViewController.swift */,
-				5540508D2942A6E0004C80A0 /* MainViewModel.swift */,
+				5540509F2946A403004C80A0 /* CharacterViewModel.swift */,
+				55B9FF6B290098C100F64053 /* CharacterViewController.swift */,
+				5540508D2942A6E0004C80A0 /* CharacterViewModelImpl.swift */,
 				5540509629458A07004C80A0 /* CollectionViewLoadingIndicatorCell.swift */,
 			);
-			path = MainView;
+			path = CharacterListScreen;
 			sourceTree = "<group>";
 		};
 		5540509829459778004C80A0 /* Database */ = {
@@ -213,18 +213,34 @@
 		55B9FF4D2900937E00F64053 /* marvel111 */ = {
 			isa = PBXGroup;
 			children = (
-				5540509829459778004C80A0 /* Database */,
-				554050902942B91D004C80A0 /* Extensions */,
+				55F2B437295E3ABF001C4725 /* res */,
+				55F334D42972034500795EC7 /* core */,
+				554050902942B91D004C80A0 /* helper */,
 				55B9FF4E2900937E00F64053 /* AppDelegate.swift */,
-				5540508829429C2E004C80A0 /* Network */,
-				55F9D54929131CDD00D02DEA /* Models */,
-				55F9D54B29155EA500D02DEA /* ViewModels */,
+				55F9D54B29155EA500D02DEA /* screens */,
 				55B9FF572900937F00F64053 /* Assets.xcassets */,
-				554AF29029017639003CC67A /* font */,
 				55B9FF592900937F00F64053 /* LaunchScreen.storyboard */,
 				55B9FF5C2900937F00F64053 /* Info.plist */,
 			);
 			path = marvel111;
+			sourceTree = "<group>";
+		};
+		55F2B437295E3ABF001C4725 /* res */ = {
+			isa = PBXGroup;
+			children = (
+				554AF29029017639003CC67A /* font */,
+			);
+			path = res;
+			sourceTree = "<group>";
+		};
+		55F334D42972034500795EC7 /* core */ = {
+			isa = PBXGroup;
+			children = (
+				55F9D54929131CDD00D02DEA /* Models */,
+				5540508829429C2E004C80A0 /* Network */,
+				5540509829459778004C80A0 /* Database */,
+			);
+			path = core;
 			sourceTree = "<group>";
 		};
 		55F9D54929131CDD00D02DEA /* Models */ = {
@@ -235,23 +251,23 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		55F9D54A2913D6A200D02DEA /* FullScreenView */ = {
+		55F9D54A2913D6A200D02DEA /* CharacterDetailsScreen */ = {
 			isa = PBXGroup;
 			children = (
 				55F9D53B2911AFCF00D02DEA /* FullScreenTransitionManager.swift */,
 				55F9D5402911B6CC00D02DEA /* FullScreenImageViewController.swift */,
 				554050A329498550004C80A0 /* FullScreenImageViewModel.swift */,
 			);
-			path = FullScreenView;
+			path = CharacterDetailsScreen;
 			sourceTree = "<group>";
 		};
-		55F9D54B29155EA500D02DEA /* ViewModels */ = {
+		55F9D54B29155EA500D02DEA /* screens */ = {
 			isa = PBXGroup;
 			children = (
-				5540509329455E11004C80A0 /* MainView */,
-				55F9D54A2913D6A200D02DEA /* FullScreenView */,
+				5540509329455E11004C80A0 /* CharacterListScreen */,
+				55F9D54A2913D6A200D02DEA /* CharacterDetailsScreen */,
 			);
-			path = ViewModels;
+			path = screens;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -383,18 +399,18 @@
 				554050922942B932004C80A0 /* UIImage+AverageColor.swift in Sources */,
 				554AF2942901D931003CC67A /* CollectionViewCell.swift in Sources */,
 				554AF292290179B2003CC67A /* PagingCollectionViewLayout.swift in Sources */,
-				5540508E2942A6E0004C80A0 /* MainViewModel.swift in Sources */,
+				5540508E2942A6E0004C80A0 /* CharacterViewModelImpl.swift in Sources */,
 				5540508A29429E0A004C80A0 /* CharacterRepository.swift in Sources */,
 				55F9D53C2911AFCF00D02DEA /* FullScreenTransitionManager.swift in Sources */,
 				F7BDDA9D2906627400D4E7FE /* BackgroundView.swift in Sources */,
-				55B9FF6C290098C100F64053 /* MainViewController.swift in Sources */,
+				55B9FF6C290098C100F64053 /* CharacterViewController.swift in Sources */,
 				554050A429498550004C80A0 /* FullScreenImageViewModel.swift in Sources */,
 				554050952945708E004C80A0 /* AF + GenericPayload.swift in Sources */,
 				5540509A294597BA004C80A0 /* DBManager.swift in Sources */,
 				554AF2962905A828003CC67A /* CharacterModel.swift in Sources */,
 				55F334D32972034500795EC7 /* DatabaseManager.swift in Sources */,
 				55F9D5412911B6CC00D02DEA /* FullScreenImageViewController.swift in Sources */,
-				554050A02946A403004C80A0 /* MainViewModelProtocol.swift in Sources */,
+				554050A02946A403004C80A0 /* CharacterViewModel.swift in Sources */,
 				5540509C294597EE004C80A0 /* CharacterModelDatabaseProtocol.swift in Sources */,
 				5540509729458A07004C80A0 /* CollectionViewLoadingIndicatorCell.swift in Sources */,
 			);

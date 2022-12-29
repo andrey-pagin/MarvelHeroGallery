@@ -5,7 +5,7 @@ enum CollectionCellItem {
     case loading
 }
 
-final class MainViewModel: MainViewModelProtocol {
+final class CharacterViewModelImpl: CharacterViewModel {
     
     var isLoading = false
     

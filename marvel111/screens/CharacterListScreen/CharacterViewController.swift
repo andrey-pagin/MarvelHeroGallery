@@ -14,7 +14,7 @@ private struct Constants {
 final class ListViewController: UIViewController {
     
     private var subscriptions = Set<AnyCancellable>()
-    private let viewModel: MainViewModelProtocol = MainViewModel()
+    private let viewModel: CharacterViewModel = CharacterViewModelImpl()
     
     private let background = BackgroundView(frame: .zero)
     private var currentSelectedItemIndex = 0
