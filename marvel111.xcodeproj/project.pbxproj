@@ -15,7 +15,6 @@
 		5540509A294597BA004C80A0 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55405099294597BA004C80A0 /* DBManager.swift */; };
 		5540509C294597EE004C80A0 /* CharacterModelDatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5540509B294597EE004C80A0 /* CharacterModelDatabaseProtocol.swift */; };
 		554050A02946A403004C80A0 /* MainViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5540509F2946A403004C80A0 /* MainViewModelProtocol.swift */; };
-		554050A22946A93C004C80A0 /* RealmCharacterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554050A12946A93C004C80A0 /* RealmCharacterModel.swift */; };
 		554050A429498550004C80A0 /* FullScreenImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554050A329498550004C80A0 /* FullScreenImageViewModel.swift */; };
 		554AF2802901762E003CC67A /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 554AF27029017629003CC67A /* Roboto-Medium.ttf */; };
 		554AF2812901762E003CC67A /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 554AF27129017629003CC67A /* Roboto-BlackItalic.ttf */; };
@@ -40,6 +39,7 @@
 		55B9FF582900937F00F64053 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55B9FF572900937F00F64053 /* Assets.xcassets */; };
 		55B9FF5B2900937F00F64053 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55B9FF592900937F00F64053 /* LaunchScreen.storyboard */; };
 		55B9FF6C290098C100F64053 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B9FF6B290098C100F64053 /* MainViewController.swift */; };
+		55F334D32972034500795EC7 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F334D22972034500795EC7 /* DatabaseManager.swift */; };
 		55F9D53A290AA1BE00D02DEA /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 55F9D539290AA1BE00D02DEA /* Kingfisher */; };
 		55F9D53C2911AFCF00D02DEA /* FullScreenTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F9D53B2911AFCF00D02DEA /* FullScreenTransitionManager.swift */; };
 		55F9D5412911B6CC00D02DEA /* FullScreenImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F9D5402911B6CC00D02DEA /* FullScreenImageViewController.swift */; };
@@ -48,7 +48,6 @@
 		55F9D558291DA3E100D02DEA /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 55F9D557291DA3E100D02DEA /* Realm */; };
 		55F9D55A291DA3E100D02DEA /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 55F9D559291DA3E100D02DEA /* RealmSwift */; };
 		F7BDDA9D2906627400D4E7FE /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BDDA9C2906627400D4E7FE /* BackgroundView.swift */; };
-		F7BDDA9F2906764400D4E7FE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BDDA9E2906764400D4E7FE /* Constants.swift */; };
 		F7BDDAA229068BD000D4E7FE /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F7BDDAA129068BD000D4E7FE /* SnapKit */; };
 /* End PBXBuildFile section */
 
@@ -74,7 +73,6 @@
 		55405099294597BA004C80A0 /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		5540509B294597EE004C80A0 /* CharacterModelDatabaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterModelDatabaseProtocol.swift; sourceTree = "<group>"; };
 		5540509F2946A403004C80A0 /* MainViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModelProtocol.swift; sourceTree = "<group>"; };
-		554050A12946A93C004C80A0 /* RealmCharacterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCharacterModel.swift; sourceTree = "<group>"; };
 		554050A329498550004C80A0 /* FullScreenImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenImageViewModel.swift; sourceTree = "<group>"; };
 		554AF27029017629003CC67A /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		554AF27129017629003CC67A /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
@@ -101,10 +99,10 @@
 		55B9FF5A2900937F00F64053 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		55B9FF5C2900937F00F64053 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55B9FF6B290098C100F64053 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		55F334D22972034500795EC7 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		55F9D53B2911AFCF00D02DEA /* FullScreenTransitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenTransitionManager.swift; sourceTree = "<group>"; };
 		55F9D5402911B6CC00D02DEA /* FullScreenImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullScreenImageViewController.swift; sourceTree = "<group>"; };
 		F7BDDA9C2906627400D4E7FE /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
-		F7BDDA9E2906764400D4E7FE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,8 +157,8 @@
 			isa = PBXGroup;
 			children = (
 				55405099294597BA004C80A0 /* DBManager.swift */,
+				55F334D22972034500795EC7 /* DatabaseManager.swift */,
 				5540509B294597EE004C80A0 /* CharacterModelDatabaseProtocol.swift */,
-				554050A12946A93C004C80A0 /* RealmCharacterModel.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -220,7 +218,6 @@
 				55B9FF4E2900937E00F64053 /* AppDelegate.swift */,
 				5540508829429C2E004C80A0 /* Network */,
 				55F9D54929131CDD00D02DEA /* Models */,
-				F7BDDA9E2906764400D4E7FE /* Constants.swift */,
 				55F9D54B29155EA500D02DEA /* ViewModels */,
 				55B9FF572900937F00F64053 /* Assets.xcassets */,
 				554AF29029017639003CC67A /* font */,
@@ -392,13 +389,12 @@
 				F7BDDA9D2906627400D4E7FE /* BackgroundView.swift in Sources */,
 				55B9FF6C290098C100F64053 /* MainViewController.swift in Sources */,
 				554050A429498550004C80A0 /* FullScreenImageViewModel.swift in Sources */,
-				554050A22946A93C004C80A0 /* RealmCharacterModel.swift in Sources */,
 				554050952945708E004C80A0 /* AF + GenericPayload.swift in Sources */,
 				5540509A294597BA004C80A0 /* DBManager.swift in Sources */,
 				554AF2962905A828003CC67A /* CharacterModel.swift in Sources */,
+				55F334D32972034500795EC7 /* DatabaseManager.swift in Sources */,
 				55F9D5412911B6CC00D02DEA /* FullScreenImageViewController.swift in Sources */,
 				554050A02946A403004C80A0 /* MainViewModelProtocol.swift in Sources */,
-				F7BDDA9F2906764400D4E7FE /* Constants.swift in Sources */,
 				5540509C294597EE004C80A0 /* CharacterModelDatabaseProtocol.swift in Sources */,
 				5540509729458A07004C80A0 /* CollectionViewLoadingIndicatorCell.swift in Sources */,
 			);

@@ -1,10 +1,10 @@
 import Foundation
 
-final class CharacterModel {
-    var name: String
-    var characterDescription: String
-    var heroId: Int
-    var imageLink: String
+struct CharacterModel {
+    let name: String
+    let characterDescription: String
+    let heroId: Int
+    let imageLink: String
     
     init(id: Int, name: String, imagelink: String, description: String) {
         self.heroId = id

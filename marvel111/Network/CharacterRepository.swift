@@ -2,16 +2,18 @@ import Alamofire
 import CryptoKit
 import Foundation
 
-class CharacterRepository {
+enum NetError: Error {
+    case emptyResult
+    case error(Error)
+}
+
+final class CharacterRepository {
     
-    private var database: CharacterModelDatabaseProtocol = DBManager()
-    
-    private var isThereInternetConnection = true
+    private var database: CharacterModelDatabaseProtocol = DatabaseManagerImpl()
     
     private let baseUrl = "https://gateway.marvel.com/v1/public/characters"
     
-    func getCharacters(offset: Int = 0, _ completion: @escaping ([CharacterModel]) -> Void) {
-        guard isThereInternetConnection == true else { completion(self.database.getAll()); return }
+    func getCharacters(offset: Int = 0, _ completion: @escaping (Result<[CharacterModel], NetError>) -> Void) {
         AF.request(
             baseUrl,
             parameters: requestParams(offset: offset)
@@ -19,14 +21,21 @@ class CharacterRepository {
             switch response.result {
             case .success(let charactersPayload):
                 debugPrint(response)
-                guard let charactersDecodable = charactersPayload.data?.results else { completion(self.database.getAll()); return }
+                guard let charactersDecodable = charactersPayload.data?.results
+                else {
+                    completion(.failure(.emptyResult))
+                    return
+                }
                 let characterModelArray: [CharacterModel] = charactersDecodable.compactMap { self.createCharacterFromDecodable(character: $0) }
                 self.database.writeAll(characters: characterModelArray)
-                completion(characterModelArray)
+                completion(.success(characterModelArray))
             case .failure(let failure):
-                self.isThereInternetConnection = false
                 NSLog(failure.localizedDescription)
-                completion(self.database.getAll())
+                if offset == 0 {
+                    completion(.success(self.database.getAll()))
+                } else {
+                    completion(.failure(.error(failure)))
+                }
             }
         }
     }
@@ -43,7 +52,7 @@ class CharacterRepository {
                 completion(characterModelArray.first)
             case .failure(let failure):
                 NSLog(failure.localizedDescription)
-                completion(nil)
+                completion(self.database.getCharacter(id: id))
             }
         }
     }
