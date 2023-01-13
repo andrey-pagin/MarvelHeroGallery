@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  marvel111
-//
-//  Created by Valery Shestakov on 20.10.2022.
-//
-
 import UIKit
 
 @UIApplicationMain

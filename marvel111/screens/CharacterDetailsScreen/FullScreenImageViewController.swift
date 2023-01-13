@@ -1,7 +1,9 @@
 import UIKit
 import SnapKit
 
-class FullScreenImageViewController: UIViewController {
+final class FullScreenImageViewController: UIViewController {
+    
+    private let viewModel = FullScreenImageViewModel()
     
     private let textOffset = 30
     
@@ -41,21 +43,19 @@ class FullScreenImageViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
-    func setup(characterData: CharacterModel?, tag: Int) {
+    func setup(characterData: CharacterModel, tag: Int) {
         heroImageView.image = .init()
+        heroDescriptionTextLabel.text = ""
+        heroNameTextLabel.text = ""
         wrapperView.tag = tag
-        guard let data = characterData else { return }
-        getCharacter(id: data.heroId) { [weak self] result in
-            switch result {
-            case .success(let characterModel):
-                self?.heroImageView.kf.setImage(with: URL(string: characterModel.imageLink) ?? URL(string: "http://127.0.0.1"))
-                self?.heroNameTextLabel.text = characterModel.name
-                self?.heroDescriptionTextLabel.text = characterModel.characterDescription
-            case .failure(let error):
-                NSLog(error.localizedDescription)
-            }
+        // set image
+        viewModel.getCharacter(id: characterData.heroId) { [weak self] character in
+            guard let self = self else { return }
+            guard let character = character else { return }
+            self.heroImageView.kf.setImage(with: URL(string: character.imageLink))
+            self.heroNameTextLabel.text = character.name
+            self.heroDescriptionTextLabel.text = character.characterDescription
         }
-
     }
     
     required init?(coder: NSCoder) {

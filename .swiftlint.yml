@@ -1,4 +1,5 @@
 disabled_rules:
+- nesting
 - trailing_whitespace
 - void_function_in_ternary
 opt_in_rules:

@@ -1,35 +1,20 @@
 import UIKit
 import SnapKit
 import Alamofire
-import UIImageColors
 import Kingfisher
-import RealmSwift
+import Combine
 
-extension UIImage {
-    var averageColor: UIColor? {
-        guard let inputImage = CIImage(image: self) else { return nil }
-        let extentVector = CIVector(x: inputImage.extent.origin.x, y: inputImage.extent.origin.y,
-                                    z: inputImage.extent.size.width, w: inputImage.extent.size.height)
-
-        guard let filter = CIFilter(name: "CIAreaAverage", parameters: [kCIInputImageKey: inputImage, kCIInputExtentKey: extentVector])
-        else { return nil }
-        guard let outputImage = filter.outputImage else { return nil }
-
-        var bitmap = [UInt8](repeating: 0, count: 4)
-        let context = CIContext(options: [.workingColorSpace: kCFNull!])
-        context.render(outputImage, toBitmap: &bitmap, rowBytes: 4, bounds: CGRect(x: 0, y: 0, width: 1, height: 1), format: .RGBA8, colorSpace: nil)
-
-        return UIColor(red: CGFloat(bitmap[0]) / 255, green: CGFloat(bitmap[1]) / 255,
-                       blue: CGFloat(bitmap[2]) / 255, alpha: CGFloat(bitmap[3]) / 255)
-    }
+private struct Constants {
+    static let collectionViewLayoutInset = UIEdgeInsets(top: 0, left: 60, bottom: 0, right: 60)
+    static let collectionViewLayoutItemSize = CGSize(width: UIScreen.main.bounds.width - 120,
+                                                     height: UIScreen.main.bounds.height - 300)
+    static let itemSpasing = 40.0
 }
 
 final class ListViewController: UIViewController {
     
-    private var offset: Int = 0 {
-        willSet { NSLog("\nNew offset = \(newValue)\n") }
-    }
-    private var isFetchingData = false
+    private var subscriptions = Set<AnyCancellable>()
+    private let viewModel: CharacterViewModel = CharacterViewModelImpl()
     
     private let background = BackgroundView(frame: .zero)
     private var currentSelectedItemIndex = 0
@@ -84,49 +69,15 @@ final class ListViewController: UIViewController {
         return collectionView
     }()
     
-    let realm = try? Realm()
-    
-    private lazy var charactersArray: [CharacterModel?] = [] {
-        willSet {
-            try? realm?.write { realm?.add(newValue.compactMap { $0 }, update: .modified) }
-        }
-        didSet {
-            collectionView.reloadData()
-        }
-    }
-    
-    private lazy var getMoreCharacters: () -> Void = {
-        let workItem = DispatchWorkItem {
-            getCharacters(offset: self.offset) { [weak self] result in
-                guard let self = self else { return }
-                switch result {
-                case .success(let characterModelArray):
-                    if  self.charactersArray.count > 0 {
-                        self.charactersArray.remove(at: self.charactersArray.count - 1)
-                    }
-                    self.charactersArray.append(contentsOf: characterModelArray)
-                    self.charactersArray.append(nil)
-                    self.offset += characterModelArray.count
-                case .failure(let error):
-                    self.charactersArray = {
-                        guard let charactersResults = self.realm?.objects(CharacterModel.self) else { return [] }
-                        return Array(charactersResults)
-                    }()
-                }
-            }
-        }
-        workItem.notify(queue: .main) { [weak self] in
-            self?.isFetchingData = false
-        }
-        if !self.isFetchingData {
-            self.isFetchingData = true
-            DispatchQueue.main.async(execute: workItem)
-        }
+    @objc func refresh() {
+       // Code to refresh collectionView
+        viewModel.refresh()
+        mainScrollView.refreshControl?.endRefreshing()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        getMoreCharacters()
+        setupBindings()
         title = ""
         navigationController?.navigationBar.tintColor = .white
         view.addSubview(mainScrollView)
@@ -140,20 +91,9 @@ final class ListViewController: UIViewController {
         mainScrollView.contentInsetAdjustmentBehavior = .never
         mainScrollView.alwaysBounceHorizontal = false
         mainScrollView.alwaysBounceVertical = true
+        viewModel.moreDataIsNeeded()
         setLayout()
-    }
-    
-    @objc func refresh() {
-       // Code to refresh collectionView
-        offset = 0
-        charactersArray.removeAll(keepingCapacity: true)
-        DispatchQueue.global().async { [weak self] in
-            self?.getMoreCharacters()
-            DispatchQueue.main.async { [weak self] in
-                self?.collectionView.reloadData()
-                self?.mainScrollView.refreshControl?.endRefreshing()
-            }
-        }
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
 
     private func setLayout() {
@@ -171,7 +111,7 @@ final class ListViewController: UIViewController {
         }
         logoImage.snp.makeConstraints { make in
             make.centerX.equalTo(contentView.snp.centerX)
-            make.top.equalTo(contentView).offset(70.0)
+            make.top.equalTo(contentView.safeAreaLayoutGuide).offset(10)
             make.size.equalTo(CGSize(width: 140, height: 30))
         }
         titleTextLabel.snp.makeConstraints { make in
@@ -186,56 +126,29 @@ final class ListViewController: UIViewController {
             make.bottom.equalTo(contentView.snp.bottom).offset(-30)
         }
     }
+    
+    private func setupBindings() {
+        viewModel.itemsPublisher.sink { [weak self] _ in
+            self?.collectionView.reloadData()
+        }.store(in: &subscriptions)
+    }
 
     private func registerCollectionViewCells() {
         collectionView.register(CollectionViewCell.self,
                                 forCellWithReuseIdentifier: String(describing: CollectionViewCell.self))
-    }
-}
 
-extension ListViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate {
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return charactersArray.count
-    }
-
-    func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: String(describing: CollectionViewCell.self),
-            for: indexPath) as? CollectionViewCell else {
-            return .init()
-        }
-        let tag = indexPath.item + 1
-        cell.setup(characterData: charactersArray[indexPath.item], and: tag)
-        return cell
+        collectionView.register(CollectionViewLoadingIndicatorCell.self,
+                                forCellWithReuseIdentifier: String(describing: CollectionViewLoadingIndicatorCell.self))
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let tag = indexPath.row + 1
-        let characterData = charactersArray[indexPath.item]
-        let fullScreenTransitionManager = FullScreenTransitionManager(anchorViewTag: tag)
-        fullScreenImageViewController.setup(characterData: characterData, tag: tag)
-        fullScreenImageViewController.modalPresentationStyle = .custom
-        fullScreenImageViewController.transitioningDelegate = fullScreenTransitionManager
-        present(fullScreenImageViewController, animated: true)
-        self.fullScreenTransitionManager = fullScreenTransitionManager
-    }
-
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if indexPath.row == charactersArray.count - 1 {
-            // Last cell is visible
-            getMoreCharacters()
-        }
-        let centerPoint = CGPoint(x: collectionView.frame.size.width / 2 + collectionView.contentOffset.x,
-                                  y: collectionView.frame.size.height / 2 + collectionView.contentOffset.y)
-        if let indexPath = collectionView.indexPathForItem(at: centerPoint) {
-            currentSelectedItemIndex = indexPath.row
+    func changeTriangleColor(currentItemIndex: Int) {
+        switch viewModel.items[currentItemIndex] {
+        case .hero(model: let model):
             let cache = ImageCache.default
-            cache.retrieveImage(forKey: "\(charactersArray[indexPath.row]?.heroId ?? 0)") { result in
+            cache.retrieveImage(forKey: "\(model.heroId)") { result in
                 switch result {
                 case .success(let value):
-                    DispatchQueue.global(qos: .background).async {
+                    DispatchQueue.global(qos: .userInteractive).async {
                         let color = value.image?.averageColor ?? .clear
                         DispatchQueue.main.async {
                             self.background.setTriangleColor(color)
@@ -245,6 +158,74 @@ extension ListViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
                     print("Error: \(error)")
                 }
             }
+        case .loading:
+            background.setTriangleColor(.black)
         }
+    }
+    
+}
+
+extension ListViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate {
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel.items.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let tag = indexPath.item + 1
+        switch viewModel.items[indexPath.item] {
+        case .hero(model: let model):
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: String(describing: CollectionViewCell.self),
+                for: indexPath) as? CollectionViewCell else {
+                return .init()
+            }
+            cell.setup(characterModel: model, and: tag)
+            return cell
+        case .loading:
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: String(describing: CollectionViewLoadingIndicatorCell.self),
+                for: indexPath) as? CollectionViewLoadingIndicatorCell else {
+                return .init()
+            }
+            cell.setup()
+            return cell
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch viewModel.items[indexPath.item] {
+        case .hero(model: let model):
+            let tag = indexPath.row + 1
+            let characterData = model
+            let fullScreenTransitionManager = FullScreenTransitionManager(anchorViewTag: tag)
+            fullScreenImageViewController.setup(characterData: characterData, tag: tag)
+            fullScreenImageViewController.modalPresentationStyle = .custom
+            fullScreenImageViewController.transitioningDelegate = fullScreenTransitionManager
+            present(fullScreenImageViewController, animated: true)
+            self.fullScreenTransitionManager = fullScreenTransitionManager
+        case .loading:
+            break
+        }
+
+    }
+
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.row == viewModel.items.count - 1 {
+            // Last cell is visible
+            viewModel.moreDataIsNeeded()
+        }
+        let centerPoint = CGPoint(x: collectionView.frame.size.width / 2 + collectionView.contentOffset.x,
+                                  y: collectionView.frame.size.height / 2 + collectionView.contentOffset.y)
+        if let indexPath = collectionView.indexPathForItem(at: centerPoint) {
+            changeTriangleColor(currentItemIndex: indexPath.item)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let size = Constants.collectionViewLayoutItemSize
+        let cellWidth = (indexPath.row == viewModel.items.count && viewModel.isLoading ) ? 40 : size.width
+        return CGSize(width: cellWidth, height: size.height)
     }
 }
