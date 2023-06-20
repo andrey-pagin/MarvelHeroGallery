@@ -93,7 +93,7 @@
 		554AF291290179B2003CC67A /* PagingCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingCollectionViewLayout.swift; sourceTree = "<group>"; };
 		554AF2932901D931003CC67A /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		554AF2952905A828003CC67A /* CharacterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterModel.swift; sourceTree = "<group>"; };
-		55B9FF4B2900937E00F64053 /* marvel111.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = marvel111.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		55B9FF4B2900937E00F64053 /* MarvelHeroGallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelHeroGallery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55B9FF4E2900937E00F64053 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55B9FF572900937F00F64053 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		55B9FF5A2900937F00F64053 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -205,7 +205,7 @@
 		55B9FF4C2900937E00F64053 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				55B9FF4B2900937E00F64053 /* marvel111.app */,
+				55B9FF4B2900937E00F64053 /* MarvelHeroGallery.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -273,9 +273,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		55B9FF4A2900937E00F64053 /* marvel111 */ = {
+		55B9FF4A2900937E00F64053 /* MarvelHeroGallery */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 55B9FF5F2900937F00F64053 /* Build configuration list for PBXNativeTarget "marvel111" */;
+			buildConfigurationList = 55B9FF5F2900937F00F64053 /* Build configuration list for PBXNativeTarget "MarvelHeroGallery" */;
 			buildPhases = (
 				55F9D537290A948700D02DEA /* swiftlint */,
 				55B9FF472900937E00F64053 /* Sources */,
@@ -287,7 +287,7 @@
 			);
 			dependencies = (
 			);
-			name = marvel111;
+			name = MarvelHeroGallery;
 			packageProductDependencies = (
 				F7BDDAA129068BD000D4E7FE /* SnapKit */,
 				55F9D539290AA1BE00D02DEA /* Kingfisher */,
@@ -297,7 +297,7 @@
 				55F9D559291DA3E100D02DEA /* RealmSwift */,
 			);
 			productName = marvel111;
-			productReference = 55B9FF4B2900937E00F64053 /* marvel111.app */;
+			productReference = 55B9FF4B2900937E00F64053 /* MarvelHeroGallery.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -315,7 +315,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 55B9FF462900937D00F64053 /* Build configuration list for PBXProject "marvel111" */;
+			buildConfigurationList = 55B9FF462900937D00F64053 /* Build configuration list for PBXProject "MarvelHeroGallery" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -335,7 +335,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				55B9FF4A2900937E00F64053 /* marvel111 */,
+				55B9FF4A2900937E00F64053 /* MarvelHeroGallery */,
 			);
 		};
 /* End PBXProject section */
@@ -611,7 +611,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		55B9FF462900937D00F64053 /* Build configuration list for PBXProject "marvel111" */ = {
+		55B9FF462900937D00F64053 /* Build configuration list for PBXProject "MarvelHeroGallery" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				55B9FF5D2900937F00F64053 /* Debug */,
@@ -620,7 +620,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		55B9FF5F2900937F00F64053 /* Build configuration list for PBXNativeTarget "marvel111" */ = {
+		55B9FF5F2900937F00F64053 /* Build configuration list for PBXNativeTarget "MarvelHeroGallery" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				55B9FF602900937F00F64053 /* Debug */,

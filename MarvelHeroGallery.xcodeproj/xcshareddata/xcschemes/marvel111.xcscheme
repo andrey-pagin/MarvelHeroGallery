@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "55B9FF4A2900937E00F64053"
-               BuildableName = "marvel111.app"
-               BlueprintName = "marvel111"
-               ReferencedContainer = "container:marvel111.xcodeproj">
+               BuildableName = "MarvelHeroGallery.app"
+               BlueprintName = "MarvelHeroGallery"
+               ReferencedContainer = "container:MarvelHeroGallery.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "55B9FF4A2900937E00F64053"
-            BuildableName = "marvel111.app"
-            BlueprintName = "marvel111"
-            ReferencedContainer = "container:marvel111.xcodeproj">
+            BuildableName = "MarvelHeroGallery.app"
+            BlueprintName = "MarvelHeroGallery"
+            ReferencedContainer = "container:MarvelHeroGallery.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "55B9FF4A2900937E00F64053"
-            BuildableName = "marvel111.app"
-            BlueprintName = "marvel111"
-            ReferencedContainer = "container:marvel111.xcodeproj">
+            BuildableName = "MarvelHeroGallery.app"
+            BlueprintName = "MarvelHeroGallery"
+            ReferencedContainer = "container:MarvelHeroGallery.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
