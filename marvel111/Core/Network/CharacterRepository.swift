@@ -18,7 +18,9 @@ final class CharacterRepository {
             baseUrl,
             parameters: requestParams(offset: offset)
         ).responseDataDecodable(of: CharacterListPayload.self) { response in
+            
             switch response.result {
+                    
             case .success(let charactersPayload):
                 debugPrint(response)
                 guard let charactersDecodable = charactersPayload.data?.results
@@ -26,9 +28,12 @@ final class CharacterRepository {
                     completion(.failure(.emptyResult))
                     return
                 }
-                let characterModelArray: [CharacterModel] = charactersDecodable.compactMap { self.createCharacterFromDecodable(character: $0) }
+                let characterModelArray: [CharacterModel] = charactersDecodable.compactMap {
+                    self.createCharacterFromDecodable(character: $0)
+                }
                 self.database.writeAll(characters: characterModelArray)
                 completion(.success(characterModelArray))
+                    
             case .failure(let failure):
                 NSLog(failure.localizedDescription)
                 if offset == 0 {

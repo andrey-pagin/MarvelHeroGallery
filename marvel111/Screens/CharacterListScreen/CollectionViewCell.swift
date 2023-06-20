@@ -32,7 +32,10 @@ final class CollectionViewCell: UICollectionViewCell {
         imageView.layoutIfNeeded()
         let processor = DownsamplingImageProcessor(size: imageView.bounds.size)
                      |> RoundCornerImageProcessor(cornerRadius: 20)
-        let resource = ImageResource(downloadURL: URL(string: characterData.imageLink) ?? URL(string: "http://127.0.0.1")!, cacheKey: "\(characterData.heroId)")
+        let resource = ImageResource(
+            downloadURL: URL(string: characterData.imageLink) ?? URL(fileURLWithPath: ""),
+            cacheKey: "\(characterData.heroId)"
+        )
         imageView.kf.setImage(
             with: resource,
             placeholder: UIImage(named: "placeholder"),

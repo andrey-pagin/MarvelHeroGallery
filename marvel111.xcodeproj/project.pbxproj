@@ -130,13 +130,13 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		554050902942B91D004C80A0 /* helper */ = {
+		554050902942B91D004C80A0 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
 				554050912942B932004C80A0 /* UIImage+AverageColor.swift */,
 				554050942945708E004C80A0 /* AF + GenericPayload.swift */,
 			);
-			path = helper;
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		5540509329455E11004C80A0 /* CharacterListScreen */ = {
@@ -163,7 +163,7 @@
 			path = Database;
 			sourceTree = "<group>";
 		};
-		554AF29029017639003CC67A /* font */ = {
+		554AF29029017639003CC67A /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
 				554AF2752901762B003CC67A /* Roboto-Black.ttf */,
@@ -183,7 +183,7 @@
 				554AF2782901762C003CC67A /* Roboto-Thin.ttf */,
 				554AF27C2901762D003CC67A /* Roboto-ThinItalic.ttf */,
 			);
-			path = font;
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		55AB4DFC29328DEC0046AE7F /* Frameworks */ = {
@@ -213,11 +213,11 @@
 		55B9FF4D2900937E00F64053 /* marvel111 */ = {
 			isa = PBXGroup;
 			children = (
-				55F2B437295E3ABF001C4725 /* res */,
-				55F334D42972034500795EC7 /* core */,
-				554050902942B91D004C80A0 /* helper */,
+				55F2B437295E3ABF001C4725 /* Resources */,
+				55F334D42972034500795EC7 /* Core */,
+				554050902942B91D004C80A0 /* Helper */,
 				55B9FF4E2900937E00F64053 /* AppDelegate.swift */,
-				55F9D54B29155EA500D02DEA /* screens */,
+				55F9D54B29155EA500D02DEA /* Screens */,
 				55B9FF572900937F00F64053 /* Assets.xcassets */,
 				55B9FF592900937F00F64053 /* LaunchScreen.storyboard */,
 				55B9FF5C2900937F00F64053 /* Info.plist */,
@@ -225,22 +225,22 @@
 			path = marvel111;
 			sourceTree = "<group>";
 		};
-		55F2B437295E3ABF001C4725 /* res */ = {
+		55F2B437295E3ABF001C4725 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				554AF29029017639003CC67A /* font */,
+				554AF29029017639003CC67A /* Fonts */,
 			);
-			path = res;
+			path = Resources;
 			sourceTree = "<group>";
 		};
-		55F334D42972034500795EC7 /* core */ = {
+		55F334D42972034500795EC7 /* Core */ = {
 			isa = PBXGroup;
 			children = (
 				55F9D54929131CDD00D02DEA /* Models */,
 				5540508829429C2E004C80A0 /* Network */,
 				5540509829459778004C80A0 /* Database */,
 			);
-			path = core;
+			path = Core;
 			sourceTree = "<group>";
 		};
 		55F9D54929131CDD00D02DEA /* Models */ = {
@@ -261,13 +261,13 @@
 			path = CharacterDetailsScreen;
 			sourceTree = "<group>";
 		};
-		55F9D54B29155EA500D02DEA /* screens */ = {
+		55F9D54B29155EA500D02DEA /* Screens */ = {
 			isa = PBXGroup;
 			children = (
 				5540509329455E11004C80A0 /* CharacterListScreen */,
 				55F9D54A2913D6A200D02DEA /* CharacterDetailsScreen */,
 			);
-			path = screens;
+			path = Screens;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
